@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Flex,Image,Heading,InputGroup,Divider,InputLeftElement,Input ,Icon} from '@chakra-ui/core';
 
-const Header =()=>{
+const Header =(props)=>{
+
+   const {onSearchChange}=props;
+   
+   const[search,setSearch]= useState("");
+
+ 
+   useEffect(
+      ()=>{
+
+      onSearchChange(search)
+
+   },[search])
 
     return(
         <Box>
@@ -13,7 +25,7 @@ const Header =()=>{
         mt="10px"
         size="60px"
         src="coin_logo.svg"/>
-               
+               {console.log(search)}
                <Box ml="10px" color="white">
                 <Heading fontSize="25px" mt="28px" >
                    Coin
@@ -31,8 +43,9 @@ const Header =()=>{
                bg="#272D38"
                borderColor="#272D38"
                color="white"
-               type="text"
-               variant="filled"
+                type="text"
+                name="search"
+                onChange={(e)=>setSearch(e.target.value)}
                size="md"
                placeholder="Search Currency  " />
 

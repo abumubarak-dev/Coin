@@ -1,37 +1,53 @@
   import TableHeadComponent from './Table.head.component';
-import TableDataComponent from './Table.data.components';
+import TableListComponent from './Table-list.component';
 import { Box } from '@chakra-ui/core';
 import React,{ useState, useEffect } from 'react';
+import Header from './Header';
 
 
 
 const TableComponent=()=>{
 
-    const [currency,setCurrency]=useState(0);
- 
+    const [currency,setCurrency]=useState([]);
+    const[search,setSearch]= useState("");
+    const[autoComplete,setAutoComplete]= useState("");
+
+    useEffect(()=>{
+
+      
+      fetch(``)
+      .then(res => res.json())
+      .then(res => {
+   
+        console.log(search)
+  
+    })
+
+    },[search])
 
   useEffect(()=>{
 //    https://api.udilia.com/coins/v1/cryptocurrencies?page=1&perPage=20
     fetch(`https://api.udilia.com/coins/v1/cryptocurrencies?page=1&perPage=20`)
     .then(res => res.json())
     .then(res => {
-        console.log(res)
-           setCurrency(
+ 
+            setCurrency(
              [{
                  items:res.currencies
              }
       ])
 
   })
-  console.log(currency);
 
-},[currency])
+},[])
 
     return(
         <Box>
+              <Header onSearchChange={setSearch}/>
+
         
-         <TableHeadComponent/>
-         <TableDataComponent currency={currency}/>
+         <TableHeadComponent />
+         <TableListComponent currency={currency}/>
         </Box>
     )
 }

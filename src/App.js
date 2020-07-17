@@ -5,8 +5,7 @@ import TableComponent from './components/Table.component';
 
 const App=()=> {
   return (
-    <Box bg="#1A202C" width='100vm' minHeight={"100vh"}>
-    <Header/>
+    <Box  width='100vm' minHeight={"100vh"}>
     <TableComponent/>
   
 
