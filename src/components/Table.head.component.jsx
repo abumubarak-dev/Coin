@@ -22,7 +22,7 @@ const TableHeadComponent= ()=>{
     <Text>
     Price
     </Text>
-    <Text>
+    <Text >
     Market Cap
     </Text>
     <Text mr="50px">

@@ -13,15 +13,16 @@ const TableComponent=()=>{
     const[autoComplete,setAutoComplete]= useState("");
 
     useEffect(()=>{
-
-      
-      fetch(``)
+      if(search){
+        fetch(` https://api.udilia.com/coins/v1/autocomplete?searchQuery=${search}`)
       .then(res => res.json())
       .then(res => {
-   
-        console.log(search)
+          setAutoComplete(res.slice(0,5))
   
     })
+      }
+      
+      
 
     },[search])
 
@@ -43,9 +44,11 @@ const TableComponent=()=>{
 
     return(
         <Box>
-              <Header onSearchChange={setSearch}/>
+              <Header
+              autoCompleteValue={autoComplete} 
+              onSearchChange={setSearch}/>
 
-        
+         
          <TableHeadComponent />
          <TableListComponent currency={currency}/>
         </Box>

@@ -2,26 +2,35 @@ import React from 'react';
 import { Box, Text,Divider } from '@chakra-ui/core';
 import TableItemComponents from './Table.item.components';
 
-const TableListComponent=(props)=>(
+const TableListComponent=(props)=>{
+
+
+  return(
+
 
   <Box>
     
       {props.currency && props.currency.map(item=>{
 
-        item.items.map(currency=> {
-       console.log(currency.rank);
-          return(
-            <b></b>
-            // <TableItemComponents currency={currency.id}/>
-          )
-        }
+        return(
+          item.items.map((currencyVal,index)=> (
+            
+            <TableItemComponents key={index} currency={currencyVal}/>
+            ///console.log(index)
+            )
+
+        )
+       
 
         )})
     }
-
+ 
   </Box>
 
-)
+
+  )
+
+  }
 
 
 export default TableListComponent;
